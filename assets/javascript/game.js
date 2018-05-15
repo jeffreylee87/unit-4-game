@@ -48,7 +48,7 @@ $(document).ready(function () {
             attacker.push(characters[$(this).attr("value")].attack);
             attacker.push(characters[$(this).attr("value")].counter);
             attacker.push(characters[$(this).attr("value")].name);
-            $(".textBox").text("Great, now please select your opponent!");
+            $(".textBox").text("Great, now please select your opponent! Also if your sound still isn't up, your missing out on epicness");
             $(".available").appendTo("#enemyAvail").removeClass("available").addClass('enemyChoose');
         });
     }
