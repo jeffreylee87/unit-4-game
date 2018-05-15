@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('.restart').hide();
+    
 
     var yourChosen = false;
 
@@ -37,8 +38,9 @@ $(document).ready(function () {
     ];
 
     if (yourChosen === false) {
-        $(".textBox").text("Message: Please Select Character");
+        $(".textBox").text("Message: Please Select Character, TURN UP SOUND to hear epicness!!!");
         startPage.on("click", ".available", function () {
+            document.getElementById('audiotag').play().autoplay; 
             //selects character
             $(this).appendTo('#chosenChar').removeClass("available").addClass("chosenOne");
             //inputs object data into chosen character 
@@ -82,15 +84,12 @@ $(document).ready(function () {
                 $(".chosenOne .card-footer").text(`Health: ${attacker[0]}`);
                 $(".fightHim .card-footer").text(`Health: ${defender[0]}`);
                 attacker[1] += attacker[1];
-                if (defender[0]<= 0 || charactersLeft === 0){
+                if (defender[0]<= 0){
                     charactersLeft--;
                     $(".textBox").text(`You have defeated ${defender[3]}, and you have ${charactersLeft} characters remaining`);
                     $(".fightHim").remove();
+                    defender = [];
                     opponentChoose();
-                    if(charactersLeft === 0){
-                        $(".textBox").text("You win big man!!!! Hit restart to play again");
-                        $(".restart").show();
-                    }
                 }
             }else{
                 $(".textBox").text("You lose loser!!! Hit restart to attempt to win, but I highly doubt it");
@@ -101,6 +100,11 @@ $(document).ready(function () {
 
     opponentChoose();
     battle();
+
+    if(charactersLeft === 0){
+    $(".textBox").text("You win big man!!!! Hit restart to play again");
+    $(".restart").show();
+    }
 
     
 

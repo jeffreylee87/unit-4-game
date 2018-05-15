@@ -14,42 +14,52 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <h1>Pokemon RPG</h1>
+    <audio id="audiotag" autoplay="autoplay" preload="auto" loop>
+        <source src="assets/Pokemon-Theme-Song.mp3" type="audio/mp3">
+        <source src="assets/Pokemon-Theme-Song.ogg" type="audio/ogg">
+    </audio>
+
+    <video autoplay loop id="video-background" muted plays-inline>
+        <source src="assets/images/Spatial_Gambit_4K_Motion_Background_Loop.mp4" type="video/mp4">
+        <!-- <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4">                -->
+    </video>
+
+
+    <div class="container">
+        <h3>Pokemon RPG</h3>
         <div class="row">
-            <div class="card col-md-2 available" id="pikachu" value="0">
+            <div class="card col-sm-2 available" id="pikachu" value="0">
                 <div class="card-header">Pikachu</div>
                 <img class="card-img-top" src="assets/images/pikachu.png">
                 <div class="card-footer">Health: 100</div>
             </div>
-            <div class="card col-md-2 available" id="charizard" value="1">
-                    <div class="card-header">Charizard</div>
-                    <img class="card-img-top" src="assets/images/charizard.png">
-                    <div class="card-footer">Health: 120</div>
+            <div class="card col-sm-2 available" id="charizard" value="1">
+                <div class="card-header">Charizard</div>
+                <img class="card-img-top" src="assets/images/charizard.png">
+                <div class="card-footer">Health: 120</div>
             </div>
-            <div class="card col-md-2 available" id="snorlax" value="2">
-                    <div class="card-header">Snorlax</div>
-                    <img class="card-img-top" src="assets/images/snorlax.png">
-                    <div class="card-footer">Health: 150</div>
+            <div class="card col-sm-2 available" id="snorlax" value="2">
+                <div class="card-header">Snorlax</div>
+                <img class="card-img-top" src="assets/images/snorlax.png">
+                <div class="card-footer">Health: 150</div>
             </div>
-            <div class="card col-md-2 available" id="mewtwo" value="3">
-                    <div class="card-header">MewTwo</div>
-                    <img class="card-img-top" src="assets/images/mewtwo.png">
-                    <div class="card-footer">Health: 180</div>
+            <div class="card col-sm-2 available" id="mewtwo" value="3">
+                <div class="card-header">MewTwo</div>
+                <img class="card-img-top" src="assets/images/mewtwo.png">
+                <div class="card-footer">Health: 180</div>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-sm-4"></div>
         </div>
-        <h3>Your Pokemon</h3>
+        <h5>Your Pokemon</h5>
         <div class="row" id="chosenChar">
         </div>
-        <h3>Enemies Available</h3>
+        <h5>Enemies Available</h5>
         <div class="row" id="enemyAvail"></div>
-        <h3>Buttons</h3>
         <div class="row buttons">
             <button class="attackButton">Attack</button>
             <button class="restart">Restart</button>
         </div>
-        <h3>Current Opponent</h3>
+        <h5>Current Opponent</h5>
         <div class="row" id="currentOpp"></div>
         <p class="textBox"></p>
     </div>
