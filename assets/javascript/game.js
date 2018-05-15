@@ -87,12 +87,15 @@ $(document).ready(function () {
         $(".attackButton").on("click", function () {
             if (attacker[0] > 0) {
                 defender[0] = defender[0] - attacker[1];
-                attacker[0] = attacker[0] - defender[2];
+                if (defender[0] > 0){
+                    attacker[0] = attacker[0] - defender[2]; 
+                } 
+                
                 $(".textBox").text(`You attacked opponent for ${attacker[1]} damage. Opponent attacked you for ${defender[2]}`);
                 $(".chosenOne .card-footer").text(`Health: ${attacker[0]}`);
                 $(".fightHim .card-footer").text(`Health: ${defender[0]}`);
                 //figure out how to increment attack power - attacker[1]+= attacker[1] didn't work
-     
+
                 attacker[1] = attacker[1] + attacker[4];
                 if (defender[0]<= 0){
                     charactersLeft--;
@@ -115,13 +118,6 @@ $(document).ready(function () {
 
     opponentChoose();
     battle();
-
-    
-
-    
-
-
-
 
 });
 
