@@ -90,6 +90,10 @@ $(document).ready(function () {
                     $(".fightHim").remove();
                     defender = [];
                     opponentChoose();
+                    if(charactersLeft === 0){
+                        $(".textBox").text("You win big man!!!! Hit restart to play again");
+                        $(".restart").show();
+                        }
                 }
             }else{
                 $(".textBox").text("You lose loser!!! Hit restart to attempt to win, but I highly doubt it");
@@ -101,10 +105,7 @@ $(document).ready(function () {
     opponentChoose();
     battle();
 
-    if(charactersLeft === 0){
-    $(".textBox").text("You win big man!!!! Hit restart to play again");
-    $(".restart").show();
-    }
+    
 
     
 

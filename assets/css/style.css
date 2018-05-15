@@ -60,3 +60,10 @@ body {
 .container {
     color:  #FD1C03;
 }
+
+button {
+    background-color:  #FD1C03; 
+    animation-name: annoying;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
