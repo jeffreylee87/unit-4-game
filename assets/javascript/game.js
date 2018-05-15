@@ -2,15 +2,13 @@ $(document).ready(function () {
     $('.restart').hide();
 
     var yourChosen = false;
-    
-    var oppChosen = false;
 
     var attacker = [];
 
     var defender = [];
 
     var charactersLeft = 3;
-    
+
     var gameOver = false;
 
     var startPage = $("body");
@@ -56,64 +54,58 @@ $(document).ready(function () {
     //we just chose
     yourChosen = true;
 
-    //choosing the opponent
-    function opponentChoose (){
-    if (yourChosen === true) {
-        startPage.on("click", ".enemyChoose", function () {
-            $(this).appendTo("#currentOpp").removeClass("enemyChoose").addClass('fightHim');
-            defender.push(characters[$(this).attr("value")].health);
-            defender.push(characters[$(this).attr("value")].attack);
-            defender.push(characters[$(this).attr("value")].counter);
-            defender.push(characters[$(this).attr("value")].name);
-            $(".textBox").text("Now attack!!!! He's trying to take your lunch money");
-        });
-    } else if (charactersLeft === 0){
-        
-    }
-}
-
-opponentChoose();
-
-
-    $(".attackButton").on("click", function () {
-        if (attacker[0]>0 && defender[0] >0){
-            defender[0] = defender[0] - attacker[1];
-            attacker[0] = attacker[0] - defender[2];
-            $(".textBox").text(`You attacked opponent for ${attacker[1]} damage. Opponent attacked you for ${defender[2]}`);
-            $(".chosenOne .card-footer").text(`Health: ${attacker[0]}`);
-            $(".fightHim .card-footer").text(`Health: ${defender[0]}`);
-            attacker[1] += attacker[1];
-            if(attacker[0]<= 0){
-                $('.textBox').text("You have been defeated loser, press restart to fight again you little man");
-                $('.restart').show();
-            } else if (defender[0]<= 0) {
-                    charactersLeft--;
-                    $(".textBox").text(`You have defeated ${defender[3]}, choose another enemy ${charactersLeft} characters left.`);
-                    $(".fightHim").remove();
-                    opponentChoose();
-                    
-                }
-            }
-    })
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-    $('.restart').on('click', function () {
+    $(".restart").on("click", function(){
         location.reload();
     })
 
+    //choosing the opponent
+    function opponentChoose() {
+        if (yourChosen === true) {
+            startPage.on("click", ".enemyChoose", function () {
+                $(this).appendTo("#currentOpp").removeClass("enemyChoose").addClass('fightHim');
+                defender.push(characters[$(this).attr("value")].health);
+                defender.push(characters[$(this).attr("value")].attack);
+                defender.push(characters[$(this).attr("value")].counter);
+                defender.push(characters[$(this).attr("value")].name);
+                $(".textBox").text("Now attack!!!! He's trying to take your lunch money");
+            });
+        }
+    }
+
+    //fight opponent
+    function battle() {
+        $(".attackButton").on("click", function () {
+            if (attacker[0] > 0) {
+                defender[0] = defender[0] - attacker[1];
+                attacker[0] = attacker[0] - defender[2];
+                $(".textBox").text(`You attacked opponent for ${attacker[1]} damage. Opponent attacked you for ${defender[2]}`);
+                $(".chosenOne .card-footer").text(`Health: ${attacker[0]}`);
+                $(".fightHim .card-footer").text(`Health: ${defender[0]}`);
+                attacker[1] += attacker[1];
+                if (defender[0]<= 0 || charactersLeft === 0){
+                    charactersLeft--;
+                    $(".textBox").text(`You have defeated ${defender[3]}, and you have ${charactersLeft} characters remaining`);
+                    $(".fightHim").remove();
+                    opponentChoose();
+                    if(charactersLeft === 0){
+                        $(".textBox").text("You win big man!!!! Hit restart to play again");
+                        $(".restart").show();
+                    }
+                }
+            }else{
+                $(".textBox").text("You lose loser!!! Hit restart to attempt to win, but I highly doubt it");
+                $(".restart").show();
+            }
+        })
+    }
+
+    opponentChoose();
+    battle();
+
+    
+
+
+
 
 });
-
 
